@@ -59,7 +59,11 @@ browser.close()
 # 写入文件
 with open("target.txt", 'w') as f:
     for domain in netlocs:
-        f.write(domain + '\n')
+        try:
+            f.write(domain.strip() + '\n')
+        except Exception as e:
+            print(e)
+            print(domain.strip())
 print("Done!")
 
 

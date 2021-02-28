@@ -19,13 +19,16 @@ def Test():
     print("获取到的url后缀:{}".format(suffix))
 
 def main():
-    Test()
+    # Test()
     main_domains = []
     filename  = "target.txt"
     with open(filename, 'r') as f1, open("ok.txt", 'w') as f2:
         for url in f1:
-            u = urlparse(url.strip()).netloc
-            domain = tldextract.extract(u).domain + '.' +tldextract.extract(url).suffix
+            # u = urlparse(str(url.strip()))
+            # print(url.strip())
+            u = urlparse("http://" + url.strip() + '/').netloc
+            # print(u)
+            domain = tldextract.extract(u).domain + '.' + tldextract.extract(url).suffix
             f2.write(domain + '\n')
     print("Done!")
 if __name__ == '__main__':
